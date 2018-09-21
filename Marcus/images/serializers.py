@@ -2,6 +2,15 @@ from rest_framework import serializers
 from . import models
 from Marcus.users import models as user_model
 
+class UserProfileImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Image
+        fields = (
+            'id',
+            'file',
+            'like_count',
+            'comment_count',
+        )
 
 class FeedUserSerializer(serializers.ModelSerializer):
 
