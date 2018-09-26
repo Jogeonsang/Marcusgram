@@ -79,7 +79,10 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'Marcus.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
-    'Marcus.images.apps.ImagesConfig'
+    'Marcus.images.apps.ImagesConfig',
+    # Images App
+    'Marcus.notifications.apps.NotificationsConfig',
+    # notifications
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
