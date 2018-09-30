@@ -35,6 +35,55 @@ class Feed(APIView):
 
         return Response(data=serializer.data)
 
+class ImageDetail(APIView):
+
+    def find_own_image(self, image_id, user):
+        try:
+            image = models.Image.objects.get(id=image_id)
+            return image
+        except models.Image.DoesNotExist:
+            return None
+
+    def get(self, request, image_id, format=None):
+
+        user = request.user
+
+        try:
+            image = models.Image.objects.get(id=image_id)
+        except models.Image.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.ImageSerializer(image)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, image_id, format=None):
+
+        user = request.user
+
+        image = self.find_own_image(image_id, user)
+
+        if image is None:
+
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = serializers.InputImageSerializer(image, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save(creator=user)
+            return Response(data=serializer.data, status=status.HTTP_204_NO_CONTENT)
+
+        else:
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, image_id, format=None):
+        user = request.user
+        image = self.find_own_image(image_id, user)
+        if image is None:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        image.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class LikeImage(APIView):
 
@@ -149,3 +198,17 @@ class Search(APIView):
         else:
 
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class ModerateComments(APIView):
+
+    def delete(self, request, image_id, comment_id, format=None):
+
+        user = request.user
+
+        try:
+            comment_to_delete = models.Comment.objects.get(id=comment_id, image__id=image_id, image__creator=user)
+            comment_to_delete.delete()
+        except models.Comment.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
