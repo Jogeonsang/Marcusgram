@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from . import models
 from Marcus.images import serializers as images_serializers
+from taggit_serializer.serializers import (TagListSerializerField,TaggitSerializer)
 
 class UserProfileSerializer(serializers.ModelSerializer):
     

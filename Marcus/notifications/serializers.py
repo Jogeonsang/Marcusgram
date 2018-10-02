@@ -2,6 +2,7 @@ from rest_framework import serializers
 from . import models
 from Marcus.users import serializers as user_serializers
 from Marcus.images import serializers as image_serializers
+from taggit_serializer.serializers import (TagListSerializerField,TaggitSerializer)
 
 
 class NotificationSerializer(serializers.ModelSerializer):
