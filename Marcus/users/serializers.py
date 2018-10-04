@@ -5,7 +5,7 @@ from taggit_serializer.serializers import (TagListSerializerField,TaggitSerializ
 
 class UserProfileSerializer(serializers.ModelSerializer):
     
-    images = images_serializers.CountImageSerializer(many=True)
+    images = images_serializers.CountImageSerializer(many=True, read_only=True)
     post_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
@@ -14,6 +14,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields = (
+            'profile_image',
             'username',
             'name',
             'bio',
