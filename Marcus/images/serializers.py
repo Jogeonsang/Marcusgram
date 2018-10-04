@@ -79,5 +79,5 @@ class InputImageSerializer(serializers.ModelSerializer):
         fields = (
             'file',
             'location',
-            'captions'
+            'caption'
         )
