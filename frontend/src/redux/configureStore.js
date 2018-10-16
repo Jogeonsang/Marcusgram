@@ -3,7 +3,7 @@ import thunk from "redux-thunk"
 import { connectRouter, routerMiddleware } from "connected-react-router"
 import { composeWithDevTools } from "redux-devtools-extension"
 import { i18nState } from "redux-i18n"
-import users from "redux/modules/users"
+import user from "redux/modules/user"
 import createHistory from "history/createBrowserHistory"
 
 const env = process.env.NODE_ENV
@@ -17,7 +17,7 @@ if (env === "development") {
 }
 
 const reducer = combineReducers({
-  users,
+  user,
   i18nState
 })
 
