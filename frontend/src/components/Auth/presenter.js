@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
+import { LoginForm, SignupForm } from 'components/AuthForms';
 
 const Auth = (props, context) => (
   <main className={styles.auth}>
@@ -7,37 +8,29 @@ const Auth = (props, context) => (
       <img src={require("images/auth_phone.png")} alt="Checkout our app. Is cool" />
     </div>
     <div className={styles.column}>
+    <div className={`${styles.whiteBox} ${styles.formBox}`}>
+        {props.action === 'login' && <LoginForm />}
+        {props.action === 'signup' && <SignupForm />}
+    </div>
       <div className={styles.whiteBox}>
-        {(() => {
-          switch (props.action) {
-            case "login":
-              return (
-                <p>
-                  Don't have an account?{" "}
+      {props.action === 'login' && (<p>
+                  계정이 없으신가요? {" "}
                   <span
                     className={styles.changeLink}
                     onClick={props.changeAction}
                   >
-                    Sign up
+                    가입하기
                   </span>
-                </p>
-              );
-            case "signup":
-              return (
-                <p>
-                  Have an account?{" "}
+                </p>)}
+        {props.action === 'signup' && (<p>
+                  계정이 있으신가요? {" "}
                   <span
                     className={styles.changeLink}
                     onClick={props.changeAction}
                   >
-                    Log in
+                    로그인
                   </span>
-                </p>
-              );
-            default:
-              return null;
-          }
-        })()}
+                </p>)}
       </div>
       <div className={styles.appBox}>
         <span>Get the app</span>
