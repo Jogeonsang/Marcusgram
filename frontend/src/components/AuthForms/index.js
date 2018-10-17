@@ -3,38 +3,38 @@ import Ionicon from 'react-ionicons';
 import styles from './styles.scss';
 
 export const LoginForm = props => (
-    <div>
-        <form>
-            <input type='text' placeholder='전화번호, 사용자 이름 또는 이메일' />
-            <input type='password' placeholder='비밀번호' />
-            <input type='submit' value='로그인' />
+    <div className={styles.formComponent}>
+        <form className={styles.form}>
+            <input type='text' placeholder='Username' className={styles.textInput}/>
+            <input type='password' placeholder='Password' className={styles.textInput}/>
+            <input type='submit' value='Log in' className={styles.button}/>
         </form>
-        <span>또는</span>
-        <span>
+        <span className={styles.divider}>또는</span>
+        <span className={styles.facebookLink}>
             <Ionicon icon='logo-facebook' fontSize='20px' color='#385185' />
-            Facebook으로 로그인
+            Log in with Facebook
         </span>
-        <span>비밀번호를 잊으셨나요?</span>
+        <span className={styles.forgot_link}>Forgot password?</span>
     </div>
 )
 
 export const SignupForm = props => (
-    <div>
-        <h3>Sign up to see photos and videos from your friends.</h3>
-        <button>
+    <div className={styles.formComponent}>
+        <h3 className={styles.signupHeader}>Sign up to see photos and videos from your friends.</h3>
+        <button className={styles.button}>
             <Ionicon icon='logo-facebook' fontSize='20px' color='white' />
             with facebbok
         </button>
-        <span>또는</span>
-        <form>
-            <input type='email' placeholder="휴다폰 번호 또는 이메일 주소" />
-            <input type='text' placeholder='성명' />
-            <input type='text' placeholder='사용자 이름' />
-            <input type='password' placeholder='비밀번호' />
-            <input type='submit' value='가입' />
+        <span className={styles.divider}>또는</span>
+        <form className={styles.form}>
+            <input type='email' placeholder="Email" className={styles.textInput}/>
+            <input type='text' placeholder='Full Name' className={styles.textInput}/>
+            <input type='text' placeholder='Username' className={styles.textInput}/>
+            <input type='password' placeholder='Password' className={styles.textInput}/>
+            <input type='submit' value='Sign up' className={styles.button}/>
         </form>
-        <p>
-            가입하면 MarcusGram의 <span>약관, 데이터정책</span> 및 <span>쿠키 정책에 동의하게 됩니다.</span>
+        <p className={styles.terms}>
+            By signing up, you agree to our <span>Terms & Privacy Policy</span>.
         </p>
     </div>
 )

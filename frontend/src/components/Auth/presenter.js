@@ -9,28 +9,31 @@ const Auth = (props, context) => (
     </div>
     <div className={styles.column}>
     <div className={`${styles.whiteBox} ${styles.formBox}`}>
+    <img src={require("images/logo.png")} alt="Logo" />
         {props.action === 'login' && <LoginForm />}
         {props.action === 'signup' && <SignupForm />}
     </div>
       <div className={styles.whiteBox}>
-      {props.action === 'login' && (<p>
-                  계정이 없으신가요? {" "}
-                  <span
-                    className={styles.changeLink}
-                    onClick={props.changeAction}
-                  >
-                    가입하기
-                  </span>
-                </p>)}
-        {props.action === 'signup' && (<p>
-                  계정이 있으신가요? {" "}
-                  <span
-                    className={styles.changeLink}
-                    onClick={props.changeAction}
-                  >
-                    로그인
-                  </span>
-                </p>)}
+      {props.action === 'login' && (
+        <p className={styles.text}>
+            Don't have an account?{" "}
+            <span
+                className={styles.changeLink}
+                onClick={props.changeAction}
+             >
+                 Signup
+            </span>
+        </p>)}
+        {props.action === 'signup' && (
+        <p className={styles.text}>
+            Have an account?{" "}
+            <span
+              className={styles.changeLink}
+              onClick={props.changeAction}
+            >
+              Login
+            </span>
+          </p>)}
       </div>
       <div className={styles.appBox}>
         <span>Get the app</span>
