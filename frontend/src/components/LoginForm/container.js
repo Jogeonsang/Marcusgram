@@ -28,7 +28,8 @@ class Container extends Component {
         event.preventDefault();
     };
     _handleFacebookLogin = response => {
-        console.log(response);
+        const { facebookLogin } = this.props;
+        facebookLogin(response.accessToken);
     }
 }
 
