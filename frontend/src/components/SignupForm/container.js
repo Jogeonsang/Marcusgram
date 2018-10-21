@@ -16,6 +16,7 @@ class Container extends Component {
             nameValue={name}
             usernameValue={username} 
             passwordValue={password} 
+            handleFacebookLogin={this._handleFacebookLogin}
             handleInputChange={this._handleInputChange}
             handleSubmit={this._handleSubmit}
             />
@@ -30,6 +31,10 @@ class Container extends Component {
     _handleSubmit = event => {
         event.preventDefault();
     };
+    _handleFacebookLogin = response => {
+        const { facebookLogin } = this.props;
+        facebookLogin(response.accessToken);
+    }
 }
 
 export default Container;
