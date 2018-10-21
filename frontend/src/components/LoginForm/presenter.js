@@ -1,7 +1,6 @@
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 import formStyles from 'shared/formStyles.scss';
-import PropTypes from "prop-types";
 
 const LoginForm = props => (
     <div className={formStyles.formComponent}>
@@ -27,7 +26,7 @@ const LoginForm = props => (
         <span className={formStyles.divider}>or</span>
             <FacebookLogin
             appId="157366258545764"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             callback={props.handleFacebookLogin} 
             cssClass={formStyles.facebookLink} 
@@ -36,12 +35,5 @@ const LoginForm = props => (
         <span className={formStyles.forgot_link}>Forgot password?</span>
     </div>
 );
-
-LoginForm.propTypes = {
-    usernameValue: PropTypes.string.isRequired,
-    passwordValue: PropTypes.string.isRequired,
-    handleInputChange: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-};
 
 export default LoginForm;

@@ -25,11 +25,15 @@ class Container extends Component {
         })
     };
     _handleSubmit = event => {
+        const { usernameLogin } = this.props;
+        const { username, password } = this.state;
         event.preventDefault();
+        usernameLogin(username, password);
     };
     _handleFacebookLogin = response => {
         const { facebookLogin } = this.props;
         facebookLogin(response.accessToken);
+        console.log(response);
     }
 }
 
