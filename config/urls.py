@@ -8,6 +8,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 from Marcus import views
 
 urlpatterns = [
+
     path("rest-auth/", include('rest_auth.urls')),
     path("rest-auth/registration/", include('rest_auth.registration.urls')),
     # Django Admin, use {% url 'admin:index' %}
@@ -27,11 +28,16 @@ urlpatterns = [
     ),
 
     path("accounts/", include("allauth.urls")),
-    path("", views.ReactAppView.as_view()),
+    
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
+
+urlpatterns += [
+    path(
+        '', views.ReactAppView.as_view()),
+]
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
