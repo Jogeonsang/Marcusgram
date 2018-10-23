@@ -14,7 +14,7 @@ const App = props => [
 
 const PrviateRoutes = props => (
     <Switch>
-        <Route exact path='/' componen={Feed} />
+        <Route exact path='/' component={Feed} />
         <Route exact path='/explore' render={() => 'explore'} />
     </Switch>
 );
