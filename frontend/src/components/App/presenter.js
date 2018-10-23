@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import './styles.scss';
 import Footer from 'components/Footer';
 import Auth from 'components/Auth';
 import Navigation from 'components/Navigation';
+import Feed from 'components/Feed';
 
 const App = props => [
     props.isLoggedIn ? <Navigation key={1} /> : null,
@@ -12,12 +12,9 @@ const App = props => [
     <Footer Key={3} />
 ];
 
-App.PropTypes = {
-    isLoggedIn: PropTypes.bool.isRequired
-}
 const PrviateRoutes = props => (
     <Switch>
-        <Route exact path='/' render={() => 'feed'} />
+        <Route exact path='/' componen={Feed} />
         <Route exact path='/explore' render={() => 'explore'} />
     </Switch>
 );
