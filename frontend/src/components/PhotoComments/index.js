@@ -5,13 +5,13 @@ const PhotoComments = props => (
   <div className={styles.comments}>
       <ul className={styles.list}>
           <Comment username={props.creator} comment={props.caption} />
-          {/* {props.comments.map(comment => (
+          {props.comments.map(comment => (
               <Comment
                   username={comment.creator.username}
                   comment={comment.message}
                   key={comment.id}
               />
-          ))} */}
+          ))}
       </ul>
   </div>
 );

@@ -22,11 +22,11 @@ const FeedPhoto = props => {
       <img src={props.file} alt={props.location} />
       <div className={styles.meta}>
           <PhotoActions number={props.like_count}/>
-          <PhotoComments 
+          <PhotoComments
             caption={props.caption}
             creator={props.creator.username}
-            comments={props.id}
-          />
+            comments={props.comments}
+        />
           <TimeStamp time={props.natural_time} />
           <CommentBox />
       </div>
