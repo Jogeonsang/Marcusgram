@@ -5,8 +5,12 @@ import styles from './styles.scss';
 const PhotoActions = props => (
     <div className={styles.actions}>
         <div className={styles.icons}>
-            <span className={styles.icon}>
-                <Ionicon icon='ios-heart-outline' fontSize='28px' color='black' />
+            <span className={styles.icon} onClick={props.handleHeartClick}>
+               {props.isLiked ? (
+                 <Ionicon icon='ios-heart' fontSize='28px' color='#eb4859' />
+               ) : (
+                 <Ionicon icon='ios-heart-outline' fontSize='28px' color='black' />
+               )}
             </span>
             <span className={styles.icon}>
                 <Ionicon icon='ios-text-outline' fontSize='28px' color='black' />
