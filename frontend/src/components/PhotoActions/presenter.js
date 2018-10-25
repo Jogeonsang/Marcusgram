@@ -16,7 +16,7 @@ const PhotoActions = props => (
                 <Ionicon icon='ios-text-outline' fontSize='28px' color='black' />
             </span>
         </div>
-        <span className={styles.likes}>
+        <span className={styles.likes} onClick={props.openLikes}>
           {props.number} {" "}
           {props.number === 1 ? ('like') : ('likes')}
          </span>

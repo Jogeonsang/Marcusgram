@@ -4,6 +4,7 @@ import PhotoActions from 'components/PhotoActions';
 import PhotoComments from 'components/PhotoComments';
 import TimeStamp from 'components/TimeStamp';
 import CommentBox from 'components/CommentBox';
+import UserList from 'components/UserList';
 
 const FeedPhoto = props => {
     return (
@@ -21,7 +22,12 @@ const FeedPhoto = props => {
       </header>
       <img src={props.file} alt={props.location} />
       <div className={styles.meta}>
-          <PhotoActions number={props.like_count} isLiked={props.is_liked} photoId={props.id}/>
+          <PhotoActions 
+            number={props.like_count} 
+            isLiked={props.is_liked} 
+            photoId={props.id}
+            openLikes={props.openLikes}
+          />
           <PhotoComments
             caption={props.caption}
             creator={props.creator.username}
@@ -30,6 +36,7 @@ const FeedPhoto = props => {
           <TimeStamp time={props.natural_time} />
           <CommentBox photoId={props.id}/>
       </div>
+      {props.seeingLikes && <UserList title={"Likes"} closeLikes={props.closeLikes} />}
     </div>
     );
 };
