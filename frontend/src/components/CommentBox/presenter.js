@@ -5,7 +5,10 @@ import styles from "./styles.scss";
   <form className={styles.commentBox}>
     <Textarea 
       className={styles.input}
-      placeholder={("Add a comment...")} 
+      placeholder={("Add a comment...")}
+      onChange={props.handleInputChange}
+      value={props.comment}
+      onKeyPress={props.handleKeyPress}
     />
   </form>
 );

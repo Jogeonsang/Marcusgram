@@ -177,22 +177,23 @@ class CommentOnImage(APIView):
 
         try:
             found_image = models.Image.objects.get(id=image_id)
-        except:
+        except models.Image.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = serializers.CommentSerializer(data=request.data)
 
-        notification_views.create_notification(
-            user, found_image.creator, 'comment', found_image, serializer.data['message'])
-
         if serializer.is_valid():
 
-           serializer.save(creator=user, image=found_image)
+            serializer.save(creator=user, image=found_image)
 
-           return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+            notification_views.create_notification(
+                user, found_image.creator, 'comment', found_image, serializer.data['message'])
+
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
         else:
-           return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class Comment(APIView):
 
