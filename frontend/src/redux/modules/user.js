@@ -18,6 +18,7 @@ function logout() {
         type: LOGOUT,
     };
 }
+
 // API actions
 
 function facebookLogin(access_token) {
@@ -86,6 +87,7 @@ function createAccount(username, password, email, name) {
         });
     };
 }
+
 // inital state
 const initialState = {
     isLoggedIn: localStorage.getItem('jwt') ? true : false,
@@ -121,6 +123,7 @@ function applyLogout(state, action) {
         isLoggedIn: false
     };
 }
+
 const actionCreators = {
     facebookLogin,
     usernameLogin,
