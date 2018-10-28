@@ -5,6 +5,7 @@ import Footer from 'components/Footer';
 import Auth from 'components/Auth';
 import Navigation from 'components/Navigation';
 import Feed from 'components/Feed';
+import Explore from 'components/Explore';
 
 const App = props => [
     props.isLoggedIn ? <Navigation key={1} /> : null,
@@ -15,7 +16,7 @@ const App = props => [
 const PrviateRoutes = props => (
     <Switch>
         <Route exact path='/' component={Feed} />
-        <Route exact path='/explore' render={() => 'explore'} />
+        <Route exact path='/explore' component={Explore} />
     </Switch>
 );
 
