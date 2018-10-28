@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./styles.scss";
 
 const UserRow = props => (
@@ -22,25 +21,5 @@ const UserRow = props => (
     </span>
   </div>
 );
-
-UserRow.contextTypes = {
-  t: PropTypes.func.isRequired
-};
-
-UserRow.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    profile_image: PropTypes.string,
-    username: PropTypes.string.isRequired,
-    name: PropTypes.string,
-    following: PropTypes.bool.isRequired
-  }).isRequired,
-  big: PropTypes.bool,
-  handleClick: PropTypes.func.isRequired
-};
-
-UserRow.defaultProps = {
-  big: false
-};
 
 export default UserRow;
