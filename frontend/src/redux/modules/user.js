@@ -90,6 +90,7 @@ function usernameLogin(username, password) {
     .then(json => {
         if(json.token) {
             dispatch(saveToken(json.token))
+            console.log(saveToken(json.token));
         }
     })
     .catch(err => console.log(err))
